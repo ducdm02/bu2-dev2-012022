@@ -7,9 +7,10 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Startmin - Bootstrap Admin Theme</title>
+        <title>Nhà thuốc</title>
        
         <!-- Bootstrap Core CSS -->
+        
         <link href="../public/backend/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- MetisMenu CSS -->
@@ -26,7 +27,7 @@
 
         <!-- Custom Fonts -->
         <link href="../public/backend/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -142,22 +143,22 @@
                                 <!-- /input-group -->
                             </li>
                             <li>
-                                <a href="index.html" class="active"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                                <a href="{{URL::to('/admin')}}" class="active"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Danh mục sản phẩm<span class="fa arrow"></span></a>
+                                <a href="{{URL::to('/category')}}"><i class="fa fa-bar-chart-o fa-fw"></i>Danh mục sản phẩm<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="flot.html">Danh sách loại sản phẩm</a>
+                                        <a href="{{URL::to('/category')}}">Danh sách loại sản phẩm</a>
                                     </li>
                                 </ul>
                                 <!-- /.nav-second-level -->
                             </li>
                             <li>
-                                <a href="tables.html"><i class="fa fa-table fa-fw"></i> Sản phẩm</a>
+                                <a href="{{URL::to('/products')}}"><i class="fa fa-table fa-fw"></i> Sản phẩm</a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="flot.html">Danh sách sản phẩm</a>
+                                        <a href="{{URL::to('/products')}}">Danh sách sản phẩm</a>
                                     </li>
                                    
                                 </ul>
@@ -186,21 +187,21 @@
         <!-- /#wrapper -->
 
         <!-- jQuery -->
-        <script src="{{asset('../public/backend/backend/js/jquery.min.js')}}"></script>
+
+        <script src="{{asset('../public/backend/js/jquery.min.js')}}"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
         <!-- Bootstrap Core JavaScript -->
-        <script src="{{asset('../public/backend/backend/js/bootstrap.min.js')}}"></script>
+        <script src="{{asset('../public/backend/js/bootstrap.min.js')}}"></script>
 
-        <!-- Metis Menu Plugin JavaScript -->
-        <script src="{{asset('../public/backend/backend/js/metisMenu.min.js')}}"></script>
-
-        <!-- Morris Charts JavaScript -->
-        <script src="{{asset('../public/backend/backend/js/raphael.min.js')}}"></script>
-        <script src="{{asset('../public/backend/backend/js/morris.min.js')}}"></script>
-        <script src="{{asset('../public/backend/backend/js/morris-data.js')}}"></script>
+      
 
         <!-- Custom Theme JavaScript -->
         <script src="{{asset('../public/backend/backend/js/startmin.js')}}"></script>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script>
+                 /* add */
+               
+    </script>
     </body>
 </html>

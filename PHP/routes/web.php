@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\admin;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,4 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('admin', [admin::class, 'index']);
+Route::get('/admin', [admin::class, 'dashboard']);
+Route::get('/products', [ProductController::class, 'index']);
+Route::get('/category', [CategoryController::class, 'index']);
+Route::post('/add-category', [CategoryController::class, 'store']);

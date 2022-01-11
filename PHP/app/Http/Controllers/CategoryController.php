@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 
 class CategoryController extends Controller
 {
@@ -14,7 +17,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories=category::all();
+        return view('admin.category')->with('categories',$categories);
     }
 
     /**
@@ -35,7 +39,14 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $category = new category();
+        $category->category_name = $data['category_name'];
+        $category->category_desc = $data['category_desc'];
+        $category->category_status = $data['category_status'];
+        $category->save();
+    	Session::put('message','Thêm danh mục sản phẩm thành công!');
+        return Redirect::to('category');
     }
 
     /**
