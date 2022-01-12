@@ -21,9 +21,5 @@ Route::get('/', function () {
 });
 Route::get('/admin', [admin::class, 'dashboard']);
 Route::get('/products', [ProductController::class, 'index']);
-/* Category */
 Route::get('/category', [CategoryController::class, 'index']);
 Route::post('/add-category', [CategoryController::class, 'store']);
-Route::post('/update-category/{category_id}', [CategoryController::class, 'update']);
-Route::get('/delete-category/{category_id}', [CategoryController::class, 'destroy']);
-/* Product */

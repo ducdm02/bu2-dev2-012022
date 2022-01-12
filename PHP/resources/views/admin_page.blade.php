@@ -33,9 +33,7 @@
         <!--[if lt IE 9]>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
-        
         <![endif]-->
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css">
     </head>
     <body>
 
@@ -180,7 +178,7 @@
             </nav>
 
             <div id="page-wrapper">
-                @yield('content')
+                @yield('content');
                 <!-- /.container-fluid -->
             </div>
             <!-- /#page-wrapper -->
@@ -195,31 +193,15 @@
 
         <!-- Bootstrap Core JavaScript -->
         <script src="{{asset('../public/backend/js/bootstrap.min.js')}}"></script>
-        <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
+
       
 
         <!-- Custom Theme JavaScript -->
         <script src="{{asset('../public/backend/backend/js/startmin.js')}}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script>
-            /* edit */
-            $(document).ready(function(){
-                var table = $('#datatable').DataTable();
-                // edit record
-                table.on('click','.edit',function(){
-                    $tr = $(this).closest('tr');
-                    if($($tr).hasClass('child')){
-                        $tr = $tr.prev('.parent');
-                    }
-                    var data = table.row($tr).data();
-                    console.log(data);
-                    $('#category_name').val(data[1]);
-                    $('#category_desc').val(data[2]);
-                    $('#category_status').val(data[3]);
-                    $('.editForm').attr("action",'{{URL::to('/update-category/')}}'+"/"+data[0]);
-                });
-            });
-        </script>
+                 /* add */
+               
+    </script>
     </body>
 </html>
