@@ -16,6 +16,7 @@
       </div>
     <div class="p-2 flex-shrink-0 bd-highlight" style="margin-bottom: 10px;">
         <a href="" class="btn btn-info btn-rounded mb-4" data-toggle="modal" data-target="#addForm">
+            <i class="fa fa-plus-circle" ></i> 
             Thêm danh mục
         </a>
     </div>
@@ -48,14 +49,15 @@
             <td>{{$product->category_name}}</td>
             <td>{{$product->producer_name}}</td>
             <td>{{$product->product_desc}}</td>
-            <td>{{$product->product_price}}</td>
-            <td>{{$product->product_image}}</td>
+            <td>{{ number_format($product->product_price,0,',','.') }}đ</td>
+            <td><img src="../public/backend/img/{{$product->product_image}}" alt=""></td>
             @if($product->product_status==1)
             <td><p class="text-success">Hiển thị</p></td>
             @else
             <td><p class="text-danger">Ẩn</p></td>
             @endif
             <td>  <a href="#" id="" class="btn btn-warning edit btn-rounded mb-4" data-toggle="modal" data-target="#editForm">
+                <i class="fa fa-edit" ></i>
                 Sửa
             </a>
             <a onclick="return confirm('Bạn có chắc là muốn xóa sản phẩm này ko?')" href="{{URL::to('/delete-product/'.$product->product_id)}}" class="btn btn-danger">

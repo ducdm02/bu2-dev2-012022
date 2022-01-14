@@ -16,6 +16,7 @@ $i=0;
       </div>
     <div class="p-2 flex-shrink-0 bd-highlight" style="margin-bottom: 10px;">
         <a href="" class="btn btn-info btn-rounded mb-4" data-toggle="modal" data-target="#addForm">
+          <i class="fa fa-plus-circle" ></i> 
             Thêm danh mục
         </a>
     </div>
@@ -47,7 +48,8 @@ $i=0;
             <td><p class="text-danger">Ẩn</p></td>
             @endif
             <td>  <a href="" id="{{$category->category_id}}" class="btn btn-warning edit btn-rounded mb-4" data-toggle="modal" data-target="#editForm">
-                Sửa
+              <i class="fa fa-edit" ></i> 
+              Sửa
             </a>
             <a onclick="return confirm('Bạn có chắc là muốn xóa danh mục này ko?')" href="{{URL::to('/delete-category/'.$category->category_id)}}" class="btn btn-danger">
                 Xóa

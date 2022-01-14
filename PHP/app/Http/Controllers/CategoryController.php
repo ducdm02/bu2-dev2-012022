@@ -50,7 +50,7 @@ class CategoryController extends Controller
         $category->category_desc = $data['category_desc'];
         $category->category_status = $data['category_status'];
         $category->save();
-    	Session::put('message','Thêm danh mục sản phẩm thành công!');
+    	$request->session()->flash('message', 'Thêm danh mục sản phẩm thành công!');
         return Redirect::to('category');
     }
 
