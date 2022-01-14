@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\product;
+use App\Models\products;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class ProductsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('admin.product');
+        $products=products::all();
+        return view('admin.product')->with('products',$products);
     }
 
     /**
@@ -41,10 +42,10 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\product  $product
+     * @param  \App\Models\products  $products
      * @return \Illuminate\Http\Response
      */
-    public function show(product $product)
+    public function show(products $products)
     {
         //
     }
@@ -52,10 +53,10 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\product  $product
+     * @param  \App\Models\products  $products
      * @return \Illuminate\Http\Response
      */
-    public function edit(product $product)
+    public function edit(products $products)
     {
         //
     }
@@ -64,10 +65,10 @@ class ProductController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\product  $product
+     * @param  \App\Models\products  $products
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, product $product)
+    public function update(Request $request, products $products)
     {
         //
     }
@@ -75,10 +76,10 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\product  $product
+     * @param  \App\Models\products  $products
      * @return \Illuminate\Http\Response
      */
-    public function destroy(product $product)
+    public function destroy(products $products)
     {
         //
     }

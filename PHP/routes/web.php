@@ -3,6 +3,7 @@
 use App\Http\Controllers\admin;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +21,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/admin', [admin::class, 'dashboard']);
-Route::get('/products', [ProductController::class, 'index']);
+
+/* Category */
 Route::get('/category', [CategoryController::class, 'index']);
 Route::post('/add-category', [CategoryController::class, 'store']);
+Route::post('/update-category/{category_id}', [CategoryController::class, 'update']);
+Route::get('/delete-category/{category_id}', [CategoryController::class, 'destroy']);
+/* Product */
+Route::get('/products', [ProductsController::class, 'index']);
