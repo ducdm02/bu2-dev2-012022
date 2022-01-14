@@ -13,4 +13,13 @@ class products extends Model
     ];
     protected $primaryKey = 'product_id';
  	protected $table = 'products';
+    public function category()
+    {
+        return $this->belongsTo(category::class);
+    }
+
+    public function producer()
+    {
+        return $this->belongsTo(producer::class);
+    }
 }

@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class category extends Model
+class producer extends Model
 {
     public $timestamps = false; //set time to false
     protected $fillable = [
-    	'category_id', 'category_name', 'category_desc','category_status'
+    	'producer_id', 'producer_name'
     ];
-    protected $primaryKey = 'category_id';
- 	protected $table = 'categories';
+    protected $primaryKey = 'producer_id';
+ 	protected $table = 'producers';
     public function products(){
         return $this->hasMany(products::class);
     }

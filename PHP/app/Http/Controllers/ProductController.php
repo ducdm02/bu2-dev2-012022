@@ -3,12 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\product;
-use App\Models\products;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Session;
 
-class ProductsController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +14,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products=products::join('categories','products.category_id','=','categories.category_id')
-        ->join('producers','products.producer_id','=','producers.producer_id')
-        ->get();
-        return view('admin.product',compact('products'));
+        return view('admin.product');
     }
 
     /**
@@ -47,10 +41,10 @@ class ProductsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\products  $products
+     * @param  \App\Models\product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(products $products)
+    public function show(product $product)
     {
         //
     }
@@ -58,10 +52,10 @@ class ProductsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\products  $products
+     * @param  \App\Models\product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(products $products)
+    public function edit(product $product)
     {
         //
     }
@@ -70,10 +64,10 @@ class ProductsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\products  $products
+     * @param  \App\Models\product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, products $products)
+    public function update(Request $request, product $product)
     {
         //
     }
@@ -81,13 +75,11 @@ class ProductsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\products  $products
+     * @param  \App\Models\product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy($product_id)
+    public function destroy(product $product)
     {
-        $product =product::where('product_id',$product_id)->delete();
-        Session::put('message','Xóa sản phẩm thành công!');
-        return Redirect::to('products');
+        //
     }
 }

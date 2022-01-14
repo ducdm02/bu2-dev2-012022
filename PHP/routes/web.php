@@ -29,3 +29,4 @@ Route::post('/update-category/{category_id}', [CategoryController::class, 'updat
 Route::get('/delete-category/{category_id}', [CategoryController::class, 'destroy']);
 /* Product */
 Route::get('/products', [ProductsController::class, 'index']);
+Route::get('/delete-product/{product_id}', [ProductsController::class, 'destroy']);

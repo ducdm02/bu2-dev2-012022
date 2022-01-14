@@ -1,10 +1,12 @@
 @extends('admin_page')
 @section('content')
-    
+    <?php
+    $i=0;
+    ?>
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Sản phẩm</h1>
+            <h1 class="page-header">Các loại Sản phẩm</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -12,76 +14,70 @@
     <div class="text-center">
        
       </div>
-    <div class="p-2 flex-shrink-0 bd-highlight">
-        <a href="" class="btn btn-success btn-rounded mb-4" data-toggle="modal" data-target="#modalRegisterForm">
-            Thêm sản phẩm
+    <div class="p-2 flex-shrink-0 bd-highlight" style="margin-bottom: 10px;">
+        <a href="" class="btn btn-info btn-rounded mb-4" data-toggle="modal" data-target="#addForm">
+            Thêm danh mục
         </a>
     </div>
-    <table class="table table-striped table-dark">
+   
+    <table id="datatable" class="table table-striped table-dark">
         <thead class="thead-dark">
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th scope="col">Stt</th>
+            <th scope="col">Mã sản phẩm</th>
+            <th scope="col">Tên sản phẩm</th>
+            <th scope="col">Số lượng sản phẩm</th>
+            <th scope="col">Tên danh mục</th>
+            <th scope="col">Tên nhà sản xuất</th>
+            <th scope="col">Mô tả</th>
+            <th scope="col">Giá</th>
+            <th scope="col">Hình ảnh</th>
+            <th scope="col">Trạng thái</th>
+            <th scope="col">Chức năng</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+        @foreach ($products as $product)
+        <tr>
+            <th scope="row">
+            <?php
+            echo  ++$i; ?></th>
+            <th>SP{{$product->product_id}}</th>
+            <td>{{$product->product_name}}</td>
+            <td>{{$product->product_quantity}}</td>
+            <td>{{$product->category_name}}</td>
+            <td>{{$product->producer_name}}</td>
+            <td>{{$product->product_desc}}</td>
+            <td>{{$product->product_price}}</td>
+            <td>{{$product->product_image}}</td>
+            @if($product->product_status==1)
+            <td><p class="text-success">Hiển thị</p></td>
+            @else
+            <td><p class="text-danger">Ẩn</p></td>
+            @endif
+            <td>  <a href="#" id="" class="btn btn-warning edit btn-rounded mb-4" data-toggle="modal" data-target="#editForm">
+                Sửa
+            </a>
+            <a onclick="return confirm('Bạn có chắc là muốn xóa sản phẩm này ko?')" href="{{URL::to('/delete-product/'.$product->product_id)}}" class="btn btn-danger">
+                Xóa
+            </a></td>
           </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-          </tr>
+        @endforeach
         </tbody>
-      </table><div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header text-center">
-            <h4 class="modal-title w-100 font-weight-bold">Sign up</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body mx-3">
-            <div class="md-form mb-5">
-              <i class="fas fa-user prefix grey-text"></i>
-              <input type="text" id="orangeForm-name" class="form-control validate">
-              <label data-error="wrong" data-success="right" for="orangeForm-name">Your name</label>
-            </div>
-            <div class="md-form mb-5">
-              <i class="fas fa-envelope prefix grey-text"></i>
-              <input type="email" id="orangeForm-email" class="form-control validate">
-              <label data-error="wrong" data-success="right" for="orangeForm-email">Your email</label>
-            </div>
+      </table>
+   
+   
     
-            <div class="md-form mb-4">
-              <i class="fas fa-lock prefix grey-text"></i>
-              <input type="password" id="orangeForm-pass" class="form-control validate">
-              <label data-error="wrong" data-success="right" for="orangeForm-pass">Your password</label>
-            </div>
-    
-          </div>
-          <div class="modal-footer d-flex justify-content-center">
-            <button class="btn btn-deep-orange">Sign up</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    
+  </div>
+    <?php
+
+use Illuminate\Support\Facades\Session;
+
+$message = Session::get('message');
+    if($message){
+        echo '<div class="alert alert-success" role="alert">'.$message.'</div>';
+        Session::put('message',null);
+    }
+    ?>
 </div>
 @endsection

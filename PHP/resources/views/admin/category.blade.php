@@ -1,6 +1,8 @@
 @extends('admin_page')
 @section('content')
-    
+<?php
+$i=0;
+?>
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-12">
@@ -21,7 +23,8 @@
     <table id="datatable" class="table table-striped table-dark">
         <thead class="thead-dark">
           <tr>
-            <th scope="col">ID</th>
+            <th scope="col">STT</th>
+            <th scope="col">Mã danh mục</th>
             <th scope="col">Tên danh mục</th>
             <th scope="col">Mô tả danh mục</th>
             <th scope="col">Trạng thái</th>
@@ -31,13 +34,17 @@
         <tbody>
         @foreach ($categories as $category)
         <tr>
-            <th scope="row">{{$category->category_id}}</th>
+            <th scope="row">
+              <?php
+              echo  ++$i; ?></th>
+            </th>
+            <th>BU{{$category->category_id}}</th>
             <td>{{$category->category_name}}</td>
             <td>{{$category->category_desc}}</td>
             @if($category->category_status==1)
-            <td>Hiển thị</td>
+            <td><p class="text-success">Hiển thị</p> </td>
             @else
-            <td>Ẩn</td>
+            <td><p class="text-danger">Ẩn</p></td>
             @endif
             <td>  <a href="" id="{{$category->category_id}}" class="btn btn-warning edit btn-rounded mb-4" data-toggle="modal" data-target="#editForm">
                 Sửa
