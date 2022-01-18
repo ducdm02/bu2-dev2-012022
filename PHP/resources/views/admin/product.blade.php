@@ -68,6 +68,11 @@
         </tbody>
       </table>
    
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      {{$products->links("pagination::bootstrap-4")}}
+    </ul>
+  </nav>
    
     
   </div>

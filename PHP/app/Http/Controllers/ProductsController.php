@@ -19,7 +19,8 @@ class ProductsController extends Controller
     {
         $products=products::join('categories','products.category_id','=','categories.category_id')
         ->join('producers','products.producer_id','=','producers.producer_id')
-        ->get();
+        ->orderBy('products.product_id','desc')
+        ->paginate(5);
         return view('admin.product',compact('products'));
     }
 

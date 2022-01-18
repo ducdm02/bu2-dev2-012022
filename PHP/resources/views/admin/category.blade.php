@@ -138,7 +138,16 @@ $i=0;
 
       </div>
     </div>
+    
   </div>
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      
+  
+     
+      {{$categories->links("pagination::bootstrap-4")}}
+    </ul>
+  </nav>
     <?php
 
 use Illuminate\Support\Facades\Session;

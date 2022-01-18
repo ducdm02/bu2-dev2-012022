@@ -4,6 +4,7 @@ use App\Http\Controllers\admin;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductsController;
+use App\Models\products;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +19,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $products=products::join('categories','products.category_id','=','categories.category_id')
+        ->join('producers','products.producer_id','=','producers.producer_id')
+        ->paginate(6);
+    return view('welcome',compact('products'));
 });
 Route::get('/admin', [admin::class, 'dashboard']);
 

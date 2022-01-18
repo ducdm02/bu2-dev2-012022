@@ -228,6 +228,9 @@
                     $('.editForm').attr("action",'{{URL::to('/update-category/')}}'+"/"+data[0]);
                 });
             });
+            $('#datatable').dataTable({
+                "bPaginate": false
+            });
         </script>
     </body>
 </html>
