@@ -27,6 +27,3 @@ Route::post('/producer-create', [ProducerController::class, "store"]);
 Route::delete('producer-delete/{producer_id}', [ProducerController::class,"destroy"])->name('delete');
 Route::get('/producer-edit/{producer_id}',  [ProducerController::class,"edit"])->name('edit');
 Route::put('/producer-update/{producer_id}',  [ProducerController::class,"update"])->name('upload');
-
-Route::get('/products', [ProductsController::class, 'index']);
-Route::get('/delete-product/{product_id}', [ProductsController::class, 'destroy']);
