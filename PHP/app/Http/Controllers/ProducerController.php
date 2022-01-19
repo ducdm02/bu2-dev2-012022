@@ -17,12 +17,17 @@ class ProducerController extends Controller
         // return view('admin.producer')->with('producers', $producers);
     }
 
+    public function create()
+    {
+        return view('admin.createProducer');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function store(Request $request)
     {
 
        // dd('abc');

@@ -14,12 +14,12 @@
     <div class="text-center">
        
       </div>
-    <div class="p-2 flex-shrink-0 bd-highlight" style="margin-bottom: 10px;">
-        <a href="" class="btn btn-info btn-rounded mb-4" data-toggle="modal" data-target="#addForm">
-            <i class="fa fa-plus-circle" ></i> 
-            Thêm mới
-        </a>
-    </div>
+      @if (session('flash_message'))
+      <div class="alert alert-success">{{ session('flash_message') }}</div>
+  @endif
+  <a href="{{ url('/product-create') }}" class="btn btn-success btn-sm" title="Add New Product    ">
+      <i class="fa fa-plus" aria-hidden="true"></i> Add New
+  </a>
    
     <table id="datatable" class="table table-striped table-dark">
         <thead class="thead-dark">

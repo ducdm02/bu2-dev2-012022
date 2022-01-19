@@ -31,9 +31,8 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.createProduct');
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -42,7 +41,21 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            // 'product_id' => 'required',
+           ' product_name' => 'required',
+            'product_quantity' => 'required',
+            'category_name' => 'required',
+            'producer_name' => 'required',
+            'product_desc' => 'required',
+            'product_price' => 'required',
+            'product_image' => 'required',
+            'product_status' => 'required',
+           
+        ]);
+        $input = $request->all();
+        products::create($input);
+        return Redirect::route('product.index')->with('flash_message','Producer Added!!!');
     }
 
     /**
