@@ -87,8 +87,28 @@ class ProductsController extends Controller
      */
     public function destroy($product_id)
     {
-        $product =product::where('product_id',$product_id)->delete();
+        $product =products::where('product_id',$product_id)->delete();
         Session::put('message','Xóa sản phẩm thành công!');
         return Redirect::to('products');
+    }
+    public function filter(){
+        
+        if(isset($_GET['start_price']) && isset($_GET['start_price'])){
+            $min_price =$_GET['start_price'];
+            $max_price =$_GET['end_price'];
+            $products=products::join('categories','products.category_id','=','categories.category_id')
+            ->join('producers','products.producer_id','=','producers.producer_id')
+            ->orderBy('products.product_id','desc')
+            ->whereBetween('product_price',[$min_price,$max_price])
+            ->orderBy('product_price','desc')
+            ->paginate(6);
+            return view('welcome',compact('products'));
+        }
+    }
+    public function ShowProduct(){
+        $products=products::join('categories','products.category_id','=','categories.category_id')
+        ->join('producers','products.producer_id','=','producers.producer_id')
+        ->paginate(6);
+    return view('welcome',compact('products'));
     }
 }

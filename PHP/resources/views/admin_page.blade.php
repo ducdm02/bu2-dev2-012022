@@ -11,22 +11,22 @@
        
         <!-- Bootstrap Core CSS -->
         
-        <link href="../public/backend/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{{asset('backend/css/bootstrap.min.css')}}" rel="stylesheet">
 
         <!-- MetisMenu CSS -->
-        <link href="../public/backend/css/metisMenu.min.css" rel="stylesheet">
+        <link href="{{asset('backend/css/metisMenu.min.css')}}" rel="stylesheet">
 
         <!-- Timeline CSS -->
-        <link href="../public/backend/css/timeline.css" rel="stylesheet">
+        <link href="{{asset('backend/css/timeline.css')}}" rel="stylesheet">
 
         <!-- Custom CSS -->
-        <link href="../public/backend/css/startmin.css" rel="stylesheet">
+        <link href="{{asset('backend/css/startmin.css')}}" rel="stylesheet">
 
         <!-- Morris Charts CSS -->
-        <link href="../public/backend/css/morris.css" rel="stylesheet">
+        <link href="{{asset('backend/css/morris.css')}}" rel="stylesheet">
 
         <!-- Custom Fonts -->
-        <link href="../public/backend/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="backend/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -173,15 +173,6 @@
                                    
                                 </ul>
                             </li>
-                            <li>
-                                <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Thương hiệu</a>
-                                <ul class="nav nav-second-level">
-                                    <li>
-                                        <a href="">Danh sách thương hiệu</a>
-                                    </li>
-                                    
-                                </ul>
-                            </li>
                         </ul>
                     </div>
                 </div>
@@ -198,17 +189,16 @@
 
         <!-- jQuery -->
 
-        <script src="{{asset('../public/backend/js/jquery.min.js')}}"></script>
+        <script src="{{asset('backend/js/jquery.min.js')}}"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
         <!-- Bootstrap Core JavaScript -->
-        <script src="{{asset('../public/backend/js/bootstrap.min.js')}}"></script>
+        <script src="{{asset('backend/js/bootstrap.min.js')}}"></script>
         <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
       
 
         <!-- Custom Theme JavaScript -->
-        <script src="{{asset('../public/backend/backend/js/startmin.js')}}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script>
             /* edit */
