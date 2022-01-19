@@ -87,7 +87,7 @@ class ProductsController extends Controller
      */
     public function destroy($product_id)
     {
-        $product =product::where('product_id',$product_id)->delete();
+        $product =products::where('product_id',$product_id)->delete();
         Session::put('message','Xóa sản phẩm thành công!');
         return Redirect::to('products');
     }

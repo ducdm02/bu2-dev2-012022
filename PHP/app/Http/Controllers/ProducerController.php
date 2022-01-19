@@ -10,7 +10,7 @@ class ProducerController extends Controller
     public function index()
     {
 
-        $producers = Producer::latest()->paginate(3);
+        $producers = Producer::latest()->paginate(5);
         return view('admin.producer',compact('producers'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
         // $producers = Producer::all();
