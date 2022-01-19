@@ -44,12 +44,7 @@ class CategoryController extends Controller
             'category_desc' => 'required',
             'category_status' => 'required'
         ]);
-        $data = $request->all();
-        $category = new category();
-        $category->category_name = $data['category_name'];
-        $category->category_desc = $data['category_desc'];
-        $category->category_status = $data['category_status'];
-        $category->save();
+        $category=category::create($request->all());
     	$request->session()->flash('message', 'Thêm danh mục sản phẩm thành công!');
         return Redirect::to('category');
     }
