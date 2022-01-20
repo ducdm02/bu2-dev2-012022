@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\product;
+use App\Models\category;
 use App\Models\products;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -31,7 +31,9 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        return view('admin.createProduct');
+        $category = category::all();
+
+        return view('admin.createProduct', compact('category'));
     }
     /**
      * Store a newly created resource in storage.
@@ -41,6 +43,14 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
+            // dd($request->all());
+        if($request->has('file')){
+            $file = $request->file;
+            //lấy tên file
+            $product_image = $file-> getClientOriginalName();
+            //upload
+            $file->move(base_path('upload'),$product_image);
+        }
         $request->validate([
             // 'product_id' => 'required',
            ' product_name' => 'required',
@@ -53,6 +63,7 @@ class ProductsController extends Controller
             'product_status' => 'required',
            
         ]);
+
         $input = $request->all();
         products::create($input);
         return Redirect::route('product.index')->with('flash_message','Producer Added!!!');

@@ -99,7 +99,7 @@ class ProducerController extends Controller
         $producers = Producer::find($producer_id);
          $producers->delete();
         // Producer::destroy($producer_id);
-        return redirect(route('producer.index'))->with('flash_message', 'Contact deleted!');
+        return redirect(route('producer.index'))->with('flash_message', 'Producer deleted!');
 
     }
 }

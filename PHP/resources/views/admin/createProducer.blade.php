@@ -11,7 +11,7 @@
           {{-- <label>Producer_id</label></br>
           <input type="text" name="producer_id" id="name" class="form-control"></br> --}}
           <label>Producer_name</label></br>
-          <input type="text" name="producer_name" id="address" class="form-control"></br>
+          <input type="text" name="producer_name" id="" class="form-control"></br>
          
           <input type="submit" value="Save" class="btn btn-success"></br>
       </form>
