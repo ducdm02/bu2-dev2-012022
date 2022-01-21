@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use App\Models\Producer;
+
 class ProductsController extends Controller
 {
     /**
@@ -33,7 +34,7 @@ class ProductsController extends Controller
     {
         $category = category::all();
         $producers = Producer::all();
-        return view('admin.createProduct', compact('category','producers'));
+        return view('admin.createProduct', compact('category', 'producers'));
     }
     /**
      * Store a newly created resource in storage.
@@ -48,45 +49,60 @@ class ProductsController extends Controller
         $input = $request->all();
         // dd($input['product_image']);
         // dd($request->all());
-        
-        if ($request->has('product_image')) {
-            $file = $request->product_image;
-            
-            //lấy tên file
-            $product_image = $file->getClientOriginalName();
-            //upload
-            $file->move(base_path('public/backend/img'), $product_image);
-        }
+
+
 
         $request->validate([
-            
+
             'product_name' => 'required',
             'product_quantity' => 'required',
             'category_id' => 'required',
             'producer_id' => 'required',
             'product_desc' => 'required',
             'product_price' => 'required',
-            
+
             'product_status' => 'required',
 
-        ]);        
+        ]);
         // dd($input);
         $product = new products();
         // $product->create($request->all());
         // $product->product_id;
         $product->product_name = $input['product_name'];
-        $product->product_quantity= $input['product_quantity'];
-        $product->product_status= $input['product_status'];
-        $product->product_desc= $input['product_desc'];
-        $product->product_price= $input['product_price'];
-        $product->product_image= $input['product_image'];
-        $product->producer_id= $input['producer_id'];
-        $product->category_id= $input['category_id'];
+        $product->product_quantity = $input['product_quantity'];
+        $product->product_status = $input['product_status'];
+        $product->product_desc = $input['product_desc'];
+        $product->product_price = $input['product_price'];
+
+        if ($request->has('product_image')) {
+            $file = $request->product_image;
+            //đuôi file
+            // $ext = $request->product_image->extension();
+            // $product_image = time().'-'.'product.'.$ext;
+            //lấy tên file
+            $product_image = $file->getClientOriginalName();
+            //upload
+            // echo $product_image;
+            // exit;
+            $extension = $file->getClientOriginalExtension();
+            $new_name = time() . '-' . $product_image;
+
+            // kiểm tra ảnh nếu đã tồn tại thì rename nó
+            while (file_exists('public/backend/img' . $file)) {
+                $new_name =  $new_name = time() . '-' . $product_image;
+            }
+            $file->move(base_path('public/backend/img/'), $new_name);
+            $product->product_image = $new_name;
+        }
+
+
+        $product->producer_id = $input['producer_id'];
+        $product->category_id = $input['category_id'];
         $product->save();
-    //   if(  $product->save()){
-    //       echo"ok";
-    //   }
-    //   else  echo"flase";
+        //   if(  $product->save()){
+        //       echo"ok";
+        //   }
+        //   else  echo"flase";
         // $product = new products();
         // products::create($input);
         // products::save();
@@ -110,9 +126,13 @@ class ProductsController extends Controller
      * @param  \App\Models\products  $products
      * @return \Illuminate\Http\Response
      */
-    public function edit(products $products)
+    public function edit($product_id)
     {
-        //
+        $category = category::all();
+        $producers = Producer::all();
+        $products = products::find($product_id);
+        // return view('admin.editProduct')->with('products', 'category', products::find($product_id));
+        return view('admin.editProduct', compact('category', 'producers', 'products'));
     }
 
     /**
@@ -122,9 +142,66 @@ class ProductsController extends Controller
      * @param  \App\Models\products  $products
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, products $products)
+    public function update(Request $request, $product_id)
     {
-        //
+        $request->validate([
+            // 'title' => 'required',
+            'product_name' => 'required',
+            'product_quantity' => 'required',
+            'category_id' => 'required',
+            'producer_id' => 'required',
+            'product_desc' => 'required',
+            'product_price' => 'required',
+            'product_status' => 'required',
+        ]);
+
+
+        $product = products::find($product_id);
+        $input = $request->all();
+        $product->product_name = $input['product_name'];
+        $product->product_quantity = $input['product_quantity'];
+        $product->product_status = $input['product_status'];
+        $product->product_desc = $input['product_desc'];
+        $product->product_price = $input['product_price'];
+
+        if ($request->has('product_image')) {
+
+            if($product->product_image){
+
+                // echo "<img src='http://localhost/bu2-dev2-012022/PHP/public/backend/img/".$product->product_image."' alt='Girl in a jacke'>"  ;
+
+                
+                // exit;
+                unlink('backend/img/'.$product->product_image);
+            }
+
+            $file = $request->product_image;
+            //đuôi file
+            // $ext = $request->product_image->extension();
+            // $product_image = time().'-'.'product.'.$ext;
+            //lấy tên file
+            $product_image = $file->getClientOriginalName();
+            //upload
+            // echo $product_image;
+            // exit;
+            $extension = $file->getClientOriginalExtension();
+            $new_name = time() . '-' . $product_image;
+
+            // kiểm tra ảnh nếu đã tồn tại thì rename nó
+            while (file_exists('public/backend/img' . $file)) {
+                $new_name =  $new_name = time() . '-' . $product_image;
+            }
+            $file->move(base_path('public/backend/img/'), $new_name);
+            $product->product_image = $new_name;
+        }
+
+
+        $product->producer_id = $input['producer_id'];
+        $product->category_id = $input['category_id'];
+        $product->save();
+
+        return Redirect::route('product.index')->with('flash_message','Product updated successfully!!!');
+
     }
 
     /**

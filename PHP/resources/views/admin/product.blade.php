@@ -46,7 +46,7 @@
                             echo ++$i; ?></th>
                         <th>SP{{ $product->product_id }}</th>
                         <td>{{ $product->product_name }}</td>
-                        <td><img src="../public/backend/img/{{$product->product_image}}" alt=""></td>
+                        <td><img src="./backend/img/{{$product->product_image}}" width="60" height="40" alt=""></td>
                         <td>{{ $product->product_quantity }}</td>
                         <td>{{ $product->category_name }}</td>
                         <td>{{ $product->producer_name }}</td>
@@ -62,7 +62,7 @@
                             </td>
                         @endif
                         <td>
-                            <a href="" title="Edit Product"><button class="btn btn-primary btn-sm"><i
+                            <a href="{{ url('product-edit/'.$product->product_id) }}" title="Edit Product"><button class="btn btn-primary btn-sm"><i
                                         class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                     Edit</button></a>&nbsp;
                             <form method="POST" action="}}" accept-charset="UTF-8" style="display:inline">

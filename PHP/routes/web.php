@@ -37,3 +37,5 @@ Route::get('/products', [ProductsController::class, "index"])->name('product.ind
 Route::get('/delete-product/{product_id}', [ProductsController::class, 'destroy']);
 Route::get('/product-create',[ProductsController::class, "create"]);
 Route::post('/create', [ProductsController::class, "store"]);
+Route::get('/product-edit/{product_id}',  [ProductsController::class,"edit"])->name('edit');
+Route::put('/product-update/{product_id}',  [ProductsController::class,"update"])->name('upload');
