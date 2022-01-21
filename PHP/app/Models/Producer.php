@@ -15,4 +15,3 @@ class Producer extends Model
     protected $primary_key = 'producer_id';
     protected $table = 'producer';
 }
-
