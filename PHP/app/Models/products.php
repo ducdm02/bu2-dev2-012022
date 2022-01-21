@@ -20,6 +20,6 @@ class products extends Model
 
     public function producer()
     {
-        return $this->belongsTo(producer::class);
+        return $this->belongsTo(Producer::class);
     }
 }

@@ -33,7 +33,7 @@ Route::delete('producer-delete/{producer_id}', [ProducerController::class,"destr
 Route::get('/producer-edit/{producer_id}',  [ProducerController::class,"edit"])->name('edit');
 Route::put('/producer-update/{producer_id}',  [ProducerController::class,"update"])->name('upload');
 
-Route::get('/products', [ProductsController::class, 'index'])->name('product.index');
+Route::get('/products', [ProductsController::class, "index"])->name('product.index');
 Route::get('/delete-product/{product_id}', [ProductsController::class, 'destroy']);
 Route::get('/product-create',[ProductsController::class, "create"]);
-Route::post('/product-create', [ProductsController::class, "store"]);
+Route::post('/create', [ProductsController::class, "store"]);

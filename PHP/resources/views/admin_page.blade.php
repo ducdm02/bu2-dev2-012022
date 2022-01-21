@@ -90,10 +90,10 @@
                                 <!-- /.nav-second-level -->
                             </li>
                             <li>
-                                <a href="{{URL::to('/product')}}"><i class="fa fa-table fa-fw"></i> Sản phẩm</a>
+                                <a href="{{URL::to('/products')}}"><i class="fa fa-table fa-fw"></i> Sản phẩm</a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="{{URL::to('/product')}}">Danh sách sản phẩm</a>
+                                        <a href="{{URL::to('/products')}}">Danh sách sản phẩm</a>
                                     </li>
                                    
                                 </ul>

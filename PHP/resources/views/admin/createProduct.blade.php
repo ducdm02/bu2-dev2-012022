@@ -6,7 +6,7 @@
         <h1>Create Producer</h1>
         {{-- <div class="card-body"> --}}
         <div class="col-md-8">
-            <form action="{{ URL::to('product-create') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ URL::to('create') }}" method="post" enctype="multipart/form-data">
                 @csrf
 
                 <div class="row">
@@ -30,7 +30,13 @@
                             <option value="">----- Chọn danh mục -----</option>
                             @foreach ($category as $cate)
                                 <option value="{{ $cate->category_id }}">{{ $cate->category_name }}</option>
-
+                            @endforeach
+                        </select><br>
+                        <label>Nhà sản xuất</label><br>
+                        <select name="producer_id" id="input" class="form-control">
+                            <option value="">----- Chọn nhà sản xuất -----</option>
+                            @foreach ($producers as $produ)
+                                <option value="{{ $produ->producer_id }}">{{ $produ->producer_name }}</option>
                             @endforeach
                         </select><br>
                         <label>Số lượng</label><br>
@@ -47,7 +53,7 @@
                         </div>
                     </div>
                 </div>
-                <input type="submit" value="Save" class="btn btn-success"></br>
+                <input type="submit" value="Save" class="btn btn-success"><br>
             </form>
         </div>
     </div>

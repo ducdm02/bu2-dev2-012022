@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProducersTable extends Migration
+class CreateProducerTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateProducersTable extends Migration
      */
     public function up()
     {
-        Schema::create('producers', function (Blueprint $table) {
+        Schema::create('producer', function (Blueprint $table) {
             $table->Increments('producer_id');
             $table->string('producer_name');
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateProducersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('producers');
+        Schema::dropIfExists('producer');
     }
 }

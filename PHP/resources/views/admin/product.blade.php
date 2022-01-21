@@ -33,7 +33,6 @@
                     <th scope="col">Tên nhà sản xuất</th>
                     <th scope="col">Mô tả</th>
                     <th scope="col">Giá</th>
-
                     <th scope="col">Trạng thái</th>
                     <th scope="col">Action</th>
                     <th scope="col"></th>
@@ -47,13 +46,12 @@
                             echo ++$i; ?></th>
                         <th>SP{{ $product->product_id }}</th>
                         <td>{{ $product->product_name }}</td>
-                        <td><img src="../public/backend/img/{{ $product->product_image }}" alt=""></td>
+                        <td><img src="../public/backend/img/{{$product->product_image}}" alt=""></td>
                         <td>{{ $product->product_quantity }}</td>
                         <td>{{ $product->category_name }}</td>
                         <td>{{ $product->producer_name }}</td>
                         <td>{{ $product->product_desc }}</td>
                         <td>{{ number_format($product->product_price, 0, ',', '.') }}đ</td>
-
                         @if ($product->product_status == 1)
                             <td>
                                 <p class="text-success">Hiển thị</p>
@@ -63,14 +61,8 @@
                                 <p class="text-danger">Ẩn</p>
                             </td>
                         @endif
-                        {{-- <td>  <a href="#" id="" class="btn btn-warning edit btn-rounded mb-4" data-toggle="modal" data-target="#editForm">
-                          <i class="fa fa-edit" ></i>
-                                        Sửa
-                                    </a>
-                                    <a onclick="return confirm('Bạn có chắc là muốn xóa sản phẩm này ko?')" href="{{URL::to('/delete-product/'.$product->product_id)}}" class="btn btn-danger">
-                                        Xóa
-                                    </a></td> --}}
-                        <td><a href="" title="Edit Producer"><button class="btn btn-primary btn-sm"><i
+                        <td>
+                            <a href="" title="Edit Product"><button class="btn btn-primary btn-sm"><i
                                         class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                     Edit</button></a>&nbsp;
                             <form method="POST" action="}}" accept-charset="UTF-8" style="display:inline">

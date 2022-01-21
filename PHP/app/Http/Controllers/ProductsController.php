@@ -7,7 +7,7 @@ use App\Models\products;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
-
+use App\Models\Producer;
 class ProductsController extends Controller
 {
     /**
@@ -17,11 +17,11 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products=products::join('categories','products.category_id','=','categories.category_id')
-        ->join('producers','products.producer_id','=','producers.producer_id')
-        ->orderBy('products.product_id','desc')
-        ->paginate(5);
-        return view('admin.product',compact('products'));
+        $products = products::join('categories', 'products.category_id', '=', 'categories.category_id')
+            ->join('producer', 'products.producer_id', '=', 'producer.producer_id')
+            ->orderBy('products.product_id', 'desc')
+            ->paginate(5);
+        return view('admin.product', compact('products'));
     }
 
     /**
@@ -32,8 +32,8 @@ class ProductsController extends Controller
     public function create()
     {
         $category = category::all();
-
-        return view('admin.createProduct', compact('category'));
+        $producers = Producer::all();
+        return view('admin.createProduct', compact('category','producers'));
     }
     /**
      * Store a newly created resource in storage.
@@ -41,32 +41,56 @@ class ProductsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
-            // dd($request->all());
-        if($request->has('file')){
-            $file = $request->file;
+        // exit;
+        $input = $request->all();
+        // dd($input['product_image']);
+        // dd($request->all());
+        
+        if ($request->has('product_image')) {
+            $file = $request->product_image;
+            
             //lấy tên file
-            $product_image = $file-> getClientOriginalName();
+            $product_image = $file->getClientOriginalName();
             //upload
-            $file->move(base_path('upload'),$product_image);
+            $file->move(base_path('public/backend/img'), $product_image);
         }
+
         $request->validate([
-            // 'product_id' => 'required',
-           ' product_name' => 'required',
+            
+            'product_name' => 'required',
             'product_quantity' => 'required',
-            'category_name' => 'required',
-            'producer_name' => 'required',
+            'category_id' => 'required',
+            'producer_id' => 'required',
             'product_desc' => 'required',
             'product_price' => 'required',
-            'product_image' => 'required',
+            
             'product_status' => 'required',
-           
-        ]);
 
-        $input = $request->all();
-        products::create($input);
-        return Redirect::route('product.index')->with('flash_message','Producer Added!!!');
+        ]);        
+        // dd($input);
+        $product = new products();
+        // $product->create($request->all());
+        // $product->product_id;
+        $product->product_name = $input['product_name'];
+        $product->product_quantity= $input['product_quantity'];
+        $product->product_status= $input['product_status'];
+        $product->product_desc= $input['product_desc'];
+        $product->product_price= $input['product_price'];
+        $product->product_image= $input['product_image'];
+        $product->producer_id= $input['producer_id'];
+        $product->category_id= $input['category_id'];
+        $product->save();
+    //   if(  $product->save()){
+    //       echo"ok";
+    //   }
+    //   else  echo"flase";
+        // $product = new products();
+        // products::create($input);
+        // products::save();
+        return Redirect::route('product.index')->with('flash_message', 'Producer Added!!!');
     }
 
     /**
@@ -111,8 +135,8 @@ class ProductsController extends Controller
      */
     public function destroy($product_id)
     {
-        $product =products::where('product_id',$product_id)->delete();
-        Session::put('message','Xóa sản phẩm thành công!');
+        $product = products::where('product_id', $product_id)->delete();
+        Session::put('message', 'Xóa sản phẩm thành công!');
         return Redirect::to('products');
     }
 }

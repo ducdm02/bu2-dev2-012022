@@ -28,9 +28,9 @@
             <tbody>
                 @foreach ($producers as $producer)
                     <tr>
-                        <td  style="border-bottom: 1px solid #000;">{{++$i}}</td>
+                        {{-- <td  style="border-bottom: 1px solid #000;">{{++$i}}</td> --}}
                         <td style="border-bottom: 1px solid #000;">{{++$i}}</td>
-                        <td style="border-bottom: 1px solid #000;">{{ $producer->id }}</td>
+                        <td style="border-bottom: 1px solid #000;">{{ $producer->producer_id }}</td>
                         <td style="border-bottom: 1px solid #000;">{{ $producer->producer_name }}</td>
                         <td class="btn-table" style="border-bottom: 1px solid #000;"><a
                                 href="{{ url('producer-edit/'.$producer->producer_id) }}" title="Edit Producer"><button
