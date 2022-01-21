@@ -12,7 +12,7 @@ class producer extends Model
     	'producer_id', 'producer_name'
     ];
     protected $primaryKey = 'producer_id';
- 	protected $table = 'producers';
+ 	protected $table = 'producer';
     public function products(){
         return $this->hasMany(products::class);
     }

@@ -149,9 +149,7 @@ $i=0;
     </ul>
   </nav>
     <?php
-
 use Illuminate\Support\Facades\Session;
-
 $message = Session::get('message');
     if($message){
         echo '<div class="alert alert-success" role="alert">'.$message.'</div>';

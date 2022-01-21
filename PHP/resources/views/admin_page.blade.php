@@ -173,6 +173,15 @@
                                    
                                 </ul>
                             </li>
+                            <li>
+                                <a href="{{URL::to('/producer')}}"><i class="fa fa-edit fa-fw"></i> Nhà sản xuất</a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="{{URL::to('/producer')}}">Danh sách Nhà sản xuất</a>
+                                    </li>
+                                    
+                                </ul>
+                            </li>
                         </ul>
                     </div>
                 </div>

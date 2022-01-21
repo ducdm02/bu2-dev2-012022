@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\product;
+
 use App\Models\products;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -18,7 +18,7 @@ class ProductsController extends Controller
     public function index()
     {
         $products=products::join('categories','products.category_id','=','categories.category_id')
-        ->join('producers','products.producer_id','=','producers.producer_id')
+        ->join('producer','products.producer_id','=','producer.producer_id')
         ->orderBy('products.product_id','desc')
         ->paginate(5);
         return view('admin.product',compact('products'));
@@ -97,7 +97,7 @@ class ProductsController extends Controller
             $min_price =$_GET['start_price'];
             $max_price =$_GET['end_price'];
             $products=products::join('categories','products.category_id','=','categories.category_id')
-            ->join('producers','products.producer_id','=','producers.producer_id')
+            ->join('producer','products.producer_id','=','producer.producer_id')
             ->orderBy('products.product_id','desc')
             ->whereBetween('product_price',[$min_price,$max_price])
             ->orderBy('product_price','desc')
@@ -107,7 +107,7 @@ class ProductsController extends Controller
     }
     public function ShowProduct(){
         $products=products::join('categories','products.category_id','=','categories.category_id')
-        ->join('producers','products.producer_id','=','producers.producer_id')
+        ->join('producer','products.producer_id','=','producer.producer_id')
         ->paginate(6);
     return view('welcome',compact('products'));
     }
