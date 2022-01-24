@@ -28,10 +28,14 @@ Route::post('/add-category', [CategoryController::class, 'store']);
 Route::post('/update-category/{category_id}', [CategoryController::class, 'update']);
 Route::get('/delete-category/{category_id}', [CategoryController::class, 'destroy']);
 /* Product */
-Route::get('/products', [ProductsController::class, 'index']);
+Route::get('/products', [ProductsController::class, 'index'])->name('product.index');;
 Route::get('/delete-product/{product_id}', [ProductsController::class, 'destroy']);
 Route::get('/', [ProductsController::class, 'ShowProduct']);
 Route::get('/filter', [ProductsController::class, 'filter']);
+Route::get('/product-create',[ProductsController::class, "create"]);
+Route::post('/create', [ProductsController::class, "store"]);
+Route::get('/product-edit/{product_id}',  [ProductsController::class,"edit"])->name('edit');
+Route::put('/product-update/{product_id}',  [ProductsController::class,"update"])->name('upload');
 /* Producer */
 Route::get('/producer', [ProducerController::class, "index"])->name('producer.index');
 Route::get('/producer-create',[ProducerController::class, "create"]);

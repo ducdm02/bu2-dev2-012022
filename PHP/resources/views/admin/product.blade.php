@@ -15,10 +15,9 @@
        
       </div>
     <div class="p-2 flex-shrink-0 bd-highlight" style="margin-bottom: 10px;">
-        <a href="" class="btn btn-info btn-rounded mb-4" data-toggle="modal" data-target="#addForm">
-            <i class="fa fa-plus-circle" ></i> 
-            Thêm danh mục
-        </a>
+      <a href="{{ url('/product-create') }}" class="btn btn-success btn-sm" title="Add New Product">
+        <i class="fa fa-plus" aria-hidden="true"></i> Add New
+    </a>
     </div>
    
     <table id="datatable" class="table table-striped table-dark">
@@ -56,10 +55,9 @@
             @else
             <td><p class="text-danger">Ẩn</p></td>
             @endif
-            <td>  <a href="#" id="" class="btn btn-warning edit btn-rounded mb-4" data-toggle="modal" data-target="#editForm">
-                <i class="fa fa-edit" ></i>
-                Sửa
-            </a>
+            <td>  <a href="{{ url('product-edit/'.$product->product_id) }}" title="Edit Product"><button class="btn btn-primary btn-sm"><i
+              class="fa fa-pencil-square-o" aria-hidden="true"></i>
+          Edit</button></a>&nbsp;
             <a onclick="return confirm('Bạn có chắc là muốn xóa sản phẩm này ko?')" href="{{URL::to('/delete-product/'.$product->product_id)}}" class="btn btn-danger">
                 Xóa
             </a></td>
