@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Producer;
+
 
 class products extends Model
 {
@@ -15,11 +17,12 @@ class products extends Model
  	protected $table = 'products';
     public function category()
     {
-        return $this->belongsTo(category::class);
+        return $this->belongsTo(category::class, 'category_id', 'category_id');
     }
 
     public function producer()
     {
-        return $this->belongsTo(Producer::class);
+
+        return $this->belongsTo(producer::class, 'producer_id','producer_id');
     }
 }

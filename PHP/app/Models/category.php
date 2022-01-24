@@ -13,4 +13,13 @@ class category extends Model
     ];
     protected $primaryKey = 'category_id';
  	protected $table = 'categories';
+     /**
+     * Get all of the comments for the producer
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function products()
+    {
+        return $this->hasMany(App\Models\products::class);
+    }
 }

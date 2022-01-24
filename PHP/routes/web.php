@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $products=products::join('categories','products.category_id','=','categories.category_id')
-        ->join('producers','products.producer_id','=','producers.producer_id')
+        ->join('producer','products.producer_id','=','producer.producer_id')
         ->paginate(6);
     return view('welcome',compact('products'));
 });
@@ -39,3 +39,8 @@ Route::get('/product-create',[ProductsController::class, "create"]);
 Route::post('/create', [ProductsController::class, "store"]);
 Route::get('/product-edit/{product_id}',  [ProductsController::class,"edit"])->name('edit');
 Route::put('/product-update/{product_id}',  [ProductsController::class,"update"])->name('upload');
+
+
+//bên fe
+
+Route::get('chi-tiet-san-pham/{product_id}', [ProductsController::class,'details_product']);

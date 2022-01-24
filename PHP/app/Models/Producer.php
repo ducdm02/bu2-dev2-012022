@@ -14,5 +14,15 @@ class Producer extends Model
     ];
     protected $primary_key = 'producer_id';
     protected $table = 'producer';
+
+    /**
+     * Get all of the comments for the producer
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function products()
+    {
+        return $this->hasMany(App\Models\products::class);
+    }
 }
 

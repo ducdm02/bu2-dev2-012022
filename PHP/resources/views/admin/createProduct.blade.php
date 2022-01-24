@@ -5,7 +5,7 @@
         <div class="card-header">Create Producer</div>
         <h1>Create Producer</h1>
         {{-- <div class="card-body"> --}}
-        <div class="col-md-8">
+        <div class="col-xl-8">
             <form action="{{ URL::to('create') }}" method="post" enctype="multipart/form-data">
                 @csrf
 
@@ -15,16 +15,17 @@
                         <input type="text" name="product_name" id="name" class="form-control"
                             placeholder="Nhập tên sản phẩm"><br>
                         <label>Mô tả</label><br>
-                        <textarea name="product_desc" id="" cols="30" rows="5" class="form-control"
+                        <textarea name="product_desc" id="mta" cols="30" rows="5" class="form-control"
                             placeholder="Mô tả sản phẩm"></textarea> <br>
-                        <script>
-                            CKEDITOR.replace('product_desc');
-                        </script>
+                            <script src="{{ asset('backend/ckeditor/ckeditor.js') }}"></script>
+                            <script>
+                                CKEDITOR.replace('mta');
+                            </script>
 
                         <label>Hình ảnh</label><br>
                         <input type="file" name="product_image" id="" class="form-control"><br>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <label>Danh mục sản phẩm</label><br>
                         <select name="category_id" id="input" class="form-control">
                             <option value="">----- Chọn danh mục -----</option>
@@ -59,3 +60,7 @@
     </div>
     <script src="{{asset('backend/ckeditor/ckeditor.js')}}"></script>
 @endsection
+
+
+
+

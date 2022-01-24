@@ -216,4 +216,19 @@ class ProductsController extends Controller
         Session::put('message', 'Xóa sản phẩm thành công!');
         return Redirect::to('products');
     }
+
+
+    //end admin product page
+
+
+    public function details_product($product_id){
+        // $products = products::join('categories', 'products.category_id', '=', 'categories.category_id')
+        //     ->join('producer', 'products.producer_id', '=', 'producer.producer_id')
+        //     ->orderBy('products.product_id', 'desc')
+            // ->paginate(5);
+            $category = category::all();
+            $producers = Producer::all();
+            $products = products::find($product_id);
+        return view('productDetail', compact('products','category','producers' ));
+    }
 }
