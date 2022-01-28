@@ -107,6 +107,8 @@ class ProductsController extends Controller
         // products::create($input);
         // products::save();
         return Redirect::route('product.index')->with('flash_message', 'Producer Added!!!');
+
+        // dd($request->all());
     }
 
     /**

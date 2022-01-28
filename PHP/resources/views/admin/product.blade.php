@@ -50,7 +50,7 @@
                         <td>{{ $product->product_quantity }}</td>
                         <td>{{ $product->category_name }}</td>
                         <td>{{ $product->producer_name }}</td>
-                        <td>{{ $product->product_desc }}</td>
+                        <td>{!! $product->product_desc !!}</td>
                         <td>{{ number_format($product->product_price, 0, ',', '.') }}đ</td>
                         @if ($product->product_status == 1)
                             <td>
