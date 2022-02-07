@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use App\Models\Producer;
+use Facade\FlareClient\Api;
 
 class ProductsController extends Controller
 {
@@ -108,7 +109,8 @@ class ProductsController extends Controller
         // products::save();
         return Redirect::route('product.index')->with('flash_message', 'Producer Added!!!');
 
-        // dd($request->all());
+        // api
+        // return products::create($request->all());
     }
 
     /**
@@ -135,6 +137,11 @@ class ProductsController extends Controller
         $products = products::find($product_id);
         // return view('admin.editProduct')->with('products', 'category', products::find($product_id));
         return view('admin.editProduct', compact('category', 'producers', 'products'));
+
+
+
+
+       
     }
 
     /**
@@ -203,6 +210,10 @@ class ProductsController extends Controller
         $product->save();
 
         return Redirect::route('product.index')->with('flash_message','Product updated successfully!!!');
+
+
+         // Api
+        // return response('Update successfully',200);
 
     }
 
