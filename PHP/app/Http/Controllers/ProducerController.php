@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Producer;
+use Facade\FlareClient\Api;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
@@ -16,7 +17,11 @@ class ProducerController extends Controller
         //     ->with('i', (request()->input('page', 1) - 1) * 5);
         // $producers = Producer::all();
         // return view('admin.producer')->with('producers', $producers);
-        return $producers;
+
+
+
+        return $producers; //api
+
     }
 
     /**
@@ -47,6 +52,11 @@ class ProducerController extends Controller
         // dd($input);
         
         return Redirect::route('producer.index')->with('flash_message','Producer Added!!!');
+
+
+        //api
+
+       // return Producer::create($request->all());
     }
 
     /**
@@ -88,6 +98,9 @@ class ProducerController extends Controller
         $producer->update($request->all());
 
         return Redirect::route('producer.index')->with('flash_message','Producer updated successfully');
+
+        // Api
+        // return response('Update successfully',200);
     }
 
     /**
@@ -102,5 +115,10 @@ class ProducerController extends Controller
          $producers->delete();
         // Producer::destroy($producer_id);
         return redirect(route('producer.index'))->with('flash_message', 'Contact deleted!');
+
+
+        
+        // Api
+        // return response('Delete successfully',200);
     }
 }
