@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\admin;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\ProducerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductsController;
 use App\Models\products;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,4 +45,5 @@ Route::post('/producer-create', [ProducerController::class, "store"]);
 Route::delete('producer-delete/{producer_id}', [ProducerController::class,"destroy"])->name('delete');
 Route::get('/producer-edit/{producer_id}',  [ProducerController::class,"edit"])->name('edit');
 Route::put('/producer-update/{producer_id}',  [ProducerController::class,"update"])->name('upload');
-
+/* Mail */
+Route::get('/send-mail',[MailController::class,'sendEmail']);
