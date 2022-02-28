@@ -9,7 +9,7 @@ class producer extends Model
 {
     public $timestamps = false; //set time to false
     protected $fillable = [
-    	'producer_id', 'producer_name'
+    	'producer_id', 'producer_name','phone_number','address'
     ];
     protected $primaryKey = 'producer_id';
  	protected $table = 'producer';
