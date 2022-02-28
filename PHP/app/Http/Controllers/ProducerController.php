@@ -10,7 +10,7 @@ class ProducerController extends Controller
     public function index()
     {
         
-        $producers = Producer::latest()->paginate(5);
+        $producers = producer::latest()->paginate(5);
         return view('admin.producer',compact('producers'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
         // $producers = Producer::all();
@@ -38,7 +38,7 @@ class ProducerController extends Controller
             'address' => 'required',
         ]);
         $input = $request->all();
-        Producer::create($input);
+        producer::create($input);
         // dd($input);
         
         return Redirect::route('producer.index')->with('flash_message','Producer Added!!!');
@@ -50,7 +50,7 @@ class ProducerController extends Controller
      * @param  \App\Models\product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Producer $producer)
+    public function show(producer $producer)
 
     {
         //
@@ -64,7 +64,7 @@ class ProducerController extends Controller
      */
     public function edit($producer_id)
     {
-        return view('admin.editProducer')->with('producers', Producer::find($producer_id));
+        return view('admin.editProducer')->with('producers', producer::find($producer_id));
 
     }
 
@@ -82,7 +82,7 @@ class ProducerController extends Controller
             // 'title' => 'required',
             'producer_name' => 'required',
         ]);
-        $producer = Producer::find($producer_id);
+        $producer = producer::find($producer_id);
         $producer->update($request->all());
 
         return Redirect::route('producer.index')->with('flash_message','Producer updated successfully');
