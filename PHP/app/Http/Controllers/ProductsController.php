@@ -228,6 +228,11 @@ class ProductsController extends Controller
         $product = products::where('product_id', $product_id)->delete();
         Session::put('message', 'Xóa sản phẩm thành công!');
         return Redirect::to('products');
+
+
+
+         // Api
+        // return response('Delete successfully',200);
     }
 
 
