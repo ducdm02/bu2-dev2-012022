@@ -34,6 +34,8 @@ class ProducerController extends Controller
         $request->validate([
             // 'producer_id' => 'required',
             'producer_name' => 'required',
+            'phone_number' => 'required',
+            'address' => 'required',
         ]);
         $input = $request->all();
         Producer::create($input);

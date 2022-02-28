@@ -249,4 +249,26 @@ class ProductsController extends Controller
             $products = products::find($product_id);
         return view('productDetail', compact('products','category','producers' ));
     }
+
+    public function filter(){
+
+        if(isset($_GET['start_price']) && isset($_GET['start_price'])){
+            $min_price =$_GET['start_price'];
+            $max_price =$_GET['end_price'];
+            $products=products::join('categories','products.category_id','=','categories.category_id')
+                ->join('producer','products.producer_id','=','producer.producer_id')
+                ->orderBy('products.product_id','desc')
+                ->whereBetween('product_price',[$min_price,$max_price])
+                ->orderBy('product_price','desc')
+                ->paginate(6);
+            return view('welcome',compact('products'));
+        }
+    }
+
+    public function ShowProduct(){
+        $products=products::join('categories','products.category_id','=','categories.category_id')
+            ->join('producer','products.producer_id','=','producer.producer_id')
+            ->paginate(6);
+        return view('welcome',compact('products'));
+    }
 }
