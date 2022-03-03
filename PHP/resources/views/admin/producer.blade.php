@@ -4,32 +4,32 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Nhà sản xuất</h1>
+                <h1 class="page-header">プロデューサー</h1>
             </div>
-            
+
         </div>
 
         @if (session('flash_message'))
             <div class="alert alert-success">{{ session('flash_message') }}</div>
         @endif
         <a href="{{ url('/producer-create') }}" class="btn btn-success btn-sm" title="Add New Producer    ">
-            <i class="fa fa-plus" aria-hidden="true"></i> Add New
+            <i class="fa fa-plus" aria-hidden="true"></i> 新しく追加する
         </a>
         <table class="table" style="margin-left: 0px; ">
-          
+
             <thead>
                 <tr style="border-bottom: 2px solid #000;">
-                    <th scope="col">STT</th>
-                    <th scope="col">Producer_id</th>
-                    <th scope="col">Producer_name</th>
-                   <th scope="col"> Action</th>
+                    <th scope="col">番号</th>
+                    <th scope="col">メーカーコード</th>
+                    <th scope="col">メーカー名</th>
+                   <th scope="col"> 関数</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($producers as $producer)
                     <tr>
                         <td style="border-bottom: 1px solid #000;">{{++$i}}</td>
-                        <td style="border-bottom: 1px solid #000;">{{ $producer->id }}</td>
+                        <td style="border-bottom: 1px solid #000;">{{ $producer->producer_id}}</td>
                         <td style="border-bottom: 1px solid #000;">{{ $producer->producer_name }}</td>
                         <td class="btn-table" style="border-bottom: 1px solid #000;"><a
                                 href="{{ url('producer-edit/'.$producer->producer_id) }}" title="Edit Producer"><button
@@ -50,5 +50,5 @@
         </table>
     </div>
 
-    {!! $producers->links() !!} 
+    {!! $producers->links() !!}
 @endsection

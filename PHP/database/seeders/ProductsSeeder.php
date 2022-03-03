@@ -19,24 +19,24 @@ class ProductsSeeder extends Seeder
         $data = [];
         $product_name = ['メ キ シ コ', 'ﾛﾝﾄﾞ ﾝ', 'ﾊﾞｲｸ', 'あ さ'];
         $name = ['メ キ シ コ', 'ﾛﾝﾄﾞ ﾝ', 'ﾊﾞｲｸ', 'あ さ'];
-        $user_id = ['1', '2', '3', '4'];
+        $number=20000;
         $all_cats = $this->getAllCat();
         $all_producers = $this->getAllProducer();
         foreach ($all_cats as $cat) {
-            foreach ($all_producers as $pro) {
-                for ($i = 1; $i < 5; $i++) {
+           $producers=$all_producers->random();
+                for ($i = 1; $i < $number; $i++) {
                     $data[] = [
                         'product_name' => Arr::random($product_name) . '_' . $i,
                         'product_quantity' => rand(50, 100),
                         'category_id' => $cat->category_id,
-                        'producer_id' => $pro->producer_id,
+                        'producer_id' => $producers->producer_id,
                         'product_desc' => 'sản phẩm rất tuyệt by ' .'_'. Arr::random($name),
-                        'product_price' => rand(100000,900000),
-                        'product_image' =>'img'.$i.'.png',
+                        'product_price' => rand(20000,200000),
+                        'product_image' =>'img'.rand(1,4).'.png',
                         'product_status' =>  rand(1,0),
                     ];
                 }
-            }
+
         }
         $chucks = array_chunk($data, 200);
         foreach ($chucks as $chuck) {

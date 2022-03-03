@@ -16,13 +16,12 @@ class CategoriesSeeder extends Seeder
     public function run()
     {
         $data = [];
-        $number=10;
-        $system_cate_name = ['メ キ シ コ', 'ﾛﾝﾄﾞ ﾝ', 'ﾊﾞｲｸ', 'あ さ'];
-        $user_name = ['メ キ シ コ', 'ﾛﾝﾄﾞ ﾝ', 'ﾊﾞｲｸ', 'あ さ'];
+        $number=3;
+        $system_cate_name = ['メ キ シ コ', 'ﾛﾝﾄﾞ ﾝ','ﾊﾞｲｸ'];
         for ($i = 1; $i < $number; $i++) {
-           
+
             $data[] = [
-                'category_name' => Arr::random($system_cate_name).'_'.$i,
+                'category_name' => Arr::random($system_cate_name),
                 'category_desc' => 'Thuốc rất tuyệt by ' .'_'. Arr::random($system_cate_name),
                 'category_status' => rand(1,0),
             ];

@@ -18,10 +18,11 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products=products::join('categories','products.category_id','=','categories.category_id')
-        ->join('producer','products.producer_id','=','producer.producer_id')
-        ->orderBy('products.product_id','desc')
-        ->paginate(5);
+        $products=products::orderBy('products.product_id','desc')->paginate(10);
+//        $products=products::join('categories','products.category_id','=','categories.category_id')
+//        ->join('producer','products.producer_id','=','producer.producer_id')
+//        ->orderBy('products.product_id','desc')
+//        ->paginate(10);
         return view('admin.product',compact('products'));
     }
 

@@ -15,11 +15,11 @@ class products extends Model
  	protected $table = 'products';
     public function category()
     {
-        return $this->belongsTo(category::class);
+        return $this->belongsTo(category::class, 'category_id', 'category_id');
     }
 
     public function producer()
     {
-        return $this->belongsTo(producer::class);
+        return $this->belongsTo(producer::class,'producer_id','producer_id');
     }
 }

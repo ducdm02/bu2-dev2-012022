@@ -52,7 +52,7 @@
             <!-- Navigation -->
             <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html">Bu2</a>
+                    <a class="navbar-brand" href="index.html">ブンニ</a>
                 </div>
 
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -153,31 +153,31 @@
                                 <!-- /input-group -->
                             </li>
                             <li>
-                                <a href="{{URL::to('/admin')}}" class="active"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                                <a href="{{URL::to('/admin')}}" class="active"><i class="fa fa-dashboard fa-fw"></i> ダッシュボード</a>
                             </li>
                             <li>
-                                <a href="{{URL::to('/category')}}"><i class="fa fa-bar-chart-o fa-fw"></i>Danh mục sản phẩm<span class="fa arrow"></span></a>
+                                <a href="{{URL::to('/category')}}"><i class="fa fa-bar-chart-o fa-fw"></i>製品ポートフォリオ<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="{{URL::to('/category')}}">Danh sách loại sản phẩm</a>
+                                        <a href="{{URL::to('/category')}}">製品タイプのリスト</a>
                                     </li>
                                 </ul>
                                 <!-- /.nav-second-level -->
                             </li>
                             <li>
-                                <a href="{{URL::to('/products')}}"><i class="fa fa-table fa-fw"></i> Sản phẩm</a>
+                                <a href="{{URL::to('/products')}}"><i class="fa fa-table fa-fw"></i> 製品</a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="{{URL::to('/products')}}">Danh sách sản phẩm</a>
+                                        <a href="{{URL::to('/products')}}">製品リスト</a>
                                     </li>
                                    
                                 </ul>
                             </li>
                             <li>
-                                <a href="{{URL::to('/producer')}}"><i class="fa fa-edit fa-fw"></i> Nhà sản xuất</a>
+                                <a href="{{URL::to('/producer')}}"><i class="fa fa-edit fa-fw"></i> プロデューサー</a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="{{URL::to('/producer')}}">Danh sách Nhà sản xuất</a>
+                                        <a href="{{URL::to('/producer')}}">メーカー一覧</a>
                                     </li>
                                     
                                 </ul>

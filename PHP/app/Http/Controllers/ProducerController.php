@@ -14,8 +14,7 @@ class ProducerController extends Controller
         $producers = Producer::latest()->paginate(5);
         return view('admin.producer',compact('producers'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
-        // $producers = Producer::all();
-        // return view('admin.producer')->with('producers', $producers);
+         return view('admin.producer')->with('producers', $producers);
     }
 
     /**
@@ -36,7 +35,6 @@ class ProducerController extends Controller
      */
     public function store(Request $request)
     {
-       // dd('abc');
         $request->validate([
             // 'producer_id' => 'required',
             'producer_name' => 'required',
